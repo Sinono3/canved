@@ -32,7 +32,7 @@ pub enum ShouldSave {
 
 #[derive(Debug)]
 pub struct Input<'w> {
-    pub mouse_pos: Option<Point>,
+    pub mouse_pos: Point,
     pub mouse_down: bool,
     pub scroll: i32,
 
@@ -46,13 +46,14 @@ pub fn brush_mode(
     temporal_buffer: &mut CanvasBuffer,
     composite_buffer: &mut CanvasBuffer,
 ) -> ShouldSave {
-    let brush_pos = input.mouse_pos.filter(|_| input.mouse_down);
+    let brush_pos = Some(input.mouse_pos).filter(|_| input.mouse_down);
     let mut should_save = ShouldSave::Continue;
 
     if *last_brush_pos != brush_pos {
         if let Some(pos) = brush_pos {
             let color = BufColor::from(brush.color);
-            let mut paint_pos = |x, y| temporal_buffer.draw_square_s(x, y, brush.size as i32, color);
+            let mut paint_pos =
+                |x, y| temporal_buffer.draw_square_s(x, y, brush.size as i32, color);
 
             if let Some(last) = last_brush_pos {
                 let (pos_x, pos_y) = (pos.0 as i32, pos.1 as i32);
@@ -78,14 +79,12 @@ pub fn brush_mode(
     brush.size = (brush.size as i32 + input.scroll).clamp(2, i32::MAX) as u32;
 
     // Brush preview
-    if let Some(pos) = input.mouse_pos {
-        composite_buffer.draw_square_s(
-            pos.0,
-            pos.1,
-            brush.size as i32,
-            brush.color.into(),
-        );
-    }
+    composite_buffer.draw_square_s(
+        input.mouse_pos.0,
+        input.mouse_pos.1,
+        brush.size as i32,
+        brush.color.into(),
+    );
 
     *last_brush_pos = brush_pos;
     should_save
@@ -104,7 +103,7 @@ pub fn crop_mode(
     composite_buffer: &mut CanvasBuffer,
 ) -> ShouldSave {
     let mut should_save = ShouldSave::Continue;
-    let select_pos = input.mouse_pos.filter(|_| input.mouse_down);
+    let select_pos = Some(input.mouse_pos).filter(|_| input.mouse_down);
 
     if let Some(CropSelection { start, end }) = *selection {
         if let Some(end) = select_pos {

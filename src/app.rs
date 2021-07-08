@@ -97,7 +97,8 @@ impl App {
                         composite_buffer.width() as i32,
                         composite_buffer.height() as i32,
                     )
-                });
+                })
+                .unwrap();
             let mouse_down = self.window.get_mouse_down(MouseButton::Left);
             let scroll = self
                 .window
