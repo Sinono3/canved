@@ -85,4 +85,4 @@ And thus, `canved` was born in May 2021, when I finally figured out a way to do 
 Other goals of canved.
 
 - To load and save as quickly as possible.
-- To be as lightweight as possible, in terms of dependencies and installation.
+- To be as lightweight as possible, in terms of dependencies and installation. (Right now, the `image` crate is the biggest dependency, but it's worth it for its wide range of formats)
