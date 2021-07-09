@@ -203,8 +203,8 @@ impl App {
                 }
             }
 
-            if let Some(new_color) = color_change {
-                self.selected_color = new_color.clamp(0, self.colors.len() as u32);
+            if let Some(new_color) = color_change.map(|c| c.clamp(0, self.colors.len() as u32 - 1)) {
+                self.selected_color = new_color;
                 self.brush.color = self.colors[new_color as usize];
             }
 
