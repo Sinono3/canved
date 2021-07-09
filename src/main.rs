@@ -12,15 +12,15 @@ use io::{ImageFormat, ImageIo};
 #[derive(Clap)]
 #[clap(version = "0.1", author = "Aldo Acevedo <aldo@aael.xyz>")]
 struct Opts {
-    /// Set input file. - is treated as stdin.
+    /// Set input file (- is treated as stdin)
     input: ImageIo,
 
-    /// Set output file. - is treated as stdout. 
+    /// Set output file (- is treated as stdout)
     #[clap(short, long)]
     output: Option<ImageIo>,
 
-    /// Override output format. By default when outputting to stdout it is PNG and when outputting
-    /// to a file it is detected by the extension.
+    /// Override output format. The default when outputting to stdout is PNG. When outputting
+    /// to a file, it is guessed by the extension.
     #[clap(short = 'F', long = "format")]
     output_format: Option<ImageFormat>,
 }
