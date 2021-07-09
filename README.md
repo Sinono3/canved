@@ -78,7 +78,7 @@ Select an area to crop with the mouse.
 
 ## Origin
 
-I got the idea for this project in October 2020, because I couldn't find an image editor that would simply allow me to add arrows, circles or text to a screenshot I'd taken, without taking 15+ seconds to load on my HDD. Not only that, but most image editors I'd found had too big of a scope for what I was trying to do (Krita, GIMP, I'd even say Pinta).
+I got the idea for this project in October 2020, because I couldn't find an image editor that would simply allow me to add arrows, circles or text to a screenshot I'd taken, without taking 15+ seconds to load on my HDD. Not only that, but most image editors I'd found had too big of a scope for what I was trying to do (Krita, GIMP, I'd even say Pinta). I do like all of them, but when doing more complex operations, like collages or texture edition for gamedev. 
 
 And thus, `canved` was born in May 2021, when I finally figured out a way to do it using `minifb`. The scope of this project is not that big. Once the features shown above are complete, there will probably only be bugfixes and optimizations, unless an useful enough feature is requested/contributed.
 
