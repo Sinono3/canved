@@ -14,7 +14,7 @@ A lightweight and minimalistic image editor for Unix systems\*.
 - [X] Mode selection.
 	- [X] View mode.
 	- [X] Brush mode. Select a color with the number keys and paint with the mouse. Resize brush with scrollwheel.
-		- [ ] Inverted color pa
+		- [ ] Inverted color brush
 	- [X] Crop mode. Select an area of the image to crop.
 	- [ ] Text mode. Write text in the desired size.
 	- [ ] Selection mode. Select a portion of the image and move it around, resize it, transform it in general. Also allow copying and pasting from the clipboard.
